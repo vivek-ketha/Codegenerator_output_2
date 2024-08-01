@@ -1,0 +1,18 @@
+from playwright.sync_api import Playwright
+
+playwright = Playwright().start()
+browser = playwright.chromium.launch()
+page = browser.new_page()
+page.goto("https://www.your-store.com/checkout")
+page.fill("name=firstName", "John")
+page.fill("name=lastName", "Doe")
+page.fill("name=phoneNumber", "555-555-5555")
+page.fill("name=address1", "123 Main St")
+page.fill("name=city", "San Francisco")
+page.select_option("css=._296s._47p_", "value=CA")
+page.fill("name=postalCode", "94105")
+page.fill("name=email", "")
+page.check("name=optInAsGuest")
+page.click("name=submit")
+browser.close()
+playwright.stop()
